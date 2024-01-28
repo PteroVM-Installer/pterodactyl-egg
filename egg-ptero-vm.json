@@ -1,0 +1,31 @@
+{
+    "_comment": "DO NOT EDIT: FILE GENERATED AUTOMATICALLY BY PTERODACTYL PANEL - PTERODACTYL.IO",
+    "meta": {
+        "version": "PTDL_v2",
+        "update_url": null
+    },
+    "exported_at": "2024-01-28T21:34:38+01:00",
+    "name": "PteroVM",
+    "author": "contact.noahprm@gmail.com",
+    "description": "PteroVM lets you create a VM into your Pterodactyl Panel. You can manage files with Pterodactyl FTP or Pterodactyl files manager.",
+    "features": null,
+    "docker_images": {
+        "ghcr.io\/pterodactyl\/yolks:debian": "ghcr.io\/pterodactyl\/yolks:debian"
+    },
+    "file_denylist": [],
+    "startup": "bash install.sh",
+    "config": {
+        "files": "{}",
+        "startup": "{\r\n    \"done\": \"started\"\r\n}",
+        "logs": "{}",
+        "stop": "^C"
+    },
+    "scripts": {
+        "installation": {
+            "script": "#!\/bin\/bash\r\n\r\napt update\r\napt install -y zip unzip wget curl\r\n\r\nif [ ! -d \"\/mnt\/server\/\" ]; then\r\n    mkdir -p \/mnt\/server\/\r\nfi\r\n\r\ncd \/mnt\/server\r\n\r\necho -e \"\\nDownloading install.sh file...\"\r\ncurl -L -o install.sh https:\/\/raw.githubusercontent.com\/PteroVM-Installer\/install.sh\/main\/ubuntu\/install.sh\r\n\r\nif [ $? -eq 0 ]; then\r\n    echo -e \"\\nDownload successful.\"\r\n    chmod +x install.sh\r\nelse\r\n    echo -e \"\\nDownload failed.\"\r\n    exit 1\r\nfi",
+            "container": "debian:bullseye-slim",
+            "entrypoint": "bash"
+        }
+    },
+    "variables": []
+}
