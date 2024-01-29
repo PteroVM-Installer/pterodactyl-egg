@@ -22,7 +22,7 @@
     },
     "scripts": {
         "installation": {
-            "script": "#!\/bin\/bash\r\n\r\napt update\r\napt install -y zip unzip wget curl\r\n\r\nif [ ! -d \"\/mnt\/server\/\" ]; then\r\n    mkdir -p \/mnt\/server\/\r\nfi\r\n\r\ncd \/mnt\/server\r\n\r\necho -e \"\\nDownloading install.sh file...\"\r\ncurl -L -o install.sh https:\/\/raw.githubusercontent.com\/PteroVM-Installer\/installer\/main\/install.sh\r\n\r\nif [ $? -eq 0 ]; then\r\n    echo -e \"\\nDownload successful.\"\r\n    chmod +x install.sh\r\nelse\r\n    echo -e \"\\nDownload failed.\"\r\n    exit 1\r\nfi",
+            "script": "#!\/bin\/bash\r\n\r\napt update\r\napt install -y zip unzip wget curl\r\n\r\nif [ ! -d \"\/mnt\/server\/\" ]; then\r\n    mkdir -p \/mnt\/server\/\r\nfi\r\n\r\ncd \/mnt\/server\r\n\r\necho -e \"\\nDownloading install.sh file...\"\r\ncurl -L -o install.sh https:\/\/raw.githubusercontent.com\/PteroVM\/installer\/main\/install.sh\r\n\r\nif [ $? -eq 0 ]; then\r\n    echo -e \"\\nDownload successful.\"\r\n    chmod +x install.sh\r\nelse\r\n    echo -e \"\\nDownload failed.\"\r\n    exit 1\r\nfi",
             "container": "debian:bullseye-slim",
             "entrypoint": "bash"
         }
